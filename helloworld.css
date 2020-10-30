@@ -3,7 +3,7 @@
     bottom: 0px;
     right: 0px;
     border: black;
-	width: 320px;
+	width: 350px;
     border: groove black 1px;
 	height: auto;
 }
@@ -26,7 +26,7 @@
 }
 
 .ispeak {
-	border: groove green 1px;
+	border: groove #bcd7bc  1px;
 	margin: 5px;
 	max-width: 80%;
 	border-radius: 5px;
@@ -35,12 +35,23 @@
 }
 
 .hespeak {
-	border: groove red 1px;
+	border: groove #d27777 1px;
 	margin: 5px;
 	max-width: 80%;
 	border-radius: 5px;
 	padding: 5px;
 	float: right;
+}
+
+.waitspeak {
+	border: none;
+	margin: 5px;
+	max-width: 80%;
+	border-radius: 5px;
+	padding: 5px;
+	float: right;
+	width: 100%;
+	text-align: right;
 }
 
 * {
@@ -49,7 +60,7 @@
 
 .inner {
   border: 1px solid purple;
-  max-width: 320px;
+  max-width: 350px;
   margin: auto;
 }
 
@@ -117,4 +128,61 @@ input[type=checkbox]:checked ~ label ~ .content {
 
 .chattext {
 	margin: 5px 0px;
+}
+
+
+/*css loader*/
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 20px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #adadf0;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 4px;
+  animation: lds-ellipsis1 1s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 4px;
+  animation: lds-ellipsis2 1s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 16px;
+  animation: lds-ellipsis2 1s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 28px;
+  animation: lds-ellipsis3 1s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(12px, 0);
+  }
 }

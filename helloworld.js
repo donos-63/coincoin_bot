@@ -5,11 +5,20 @@ function getDateString()
 	return datestring;
 }
 
+//cutting the speech is rude, and it really complicates the code! We prevent it...
+var isWaitingAnswer = false;
+var interlocutor = '';
+
 function submitDiscussion(){
 	var textbox =  document.getElementsByClassName('text-content')[0];
 	var messageContent = document.getElementById("discussionInput");
-					
-	if(messageContent.value == '')
+	
+	//no message or delay too short
+	if(messageContent.value == '' || isWaitingAnswer)
+		return false;
+
+	//sometimes, do not answer except if this is a question
+	if(!messageContent.value.endsWith('?') && getRandomInt(7) == 0)
 		return false;
 
 	textbox.innerHTML += "<div class='ispeak'><div class='chatform'><span class='titleme'>"+ document.getElementsByName('user')[0].value  +"</span><span class='chataddition'>"+getDateString()+"</span><div class='chattext'>" + messageContent.value + "</div></div></div>";
@@ -18,15 +27,40 @@ function submitDiscussion(){
 	
 	var nbWords = getRandomInt(10) + 1;
 	//generate an answer with a delay, computed with the number of word in the answer
-	setTimeout(function() { generateAnswer(nbWords); }, nbWords * 200);
+
+	//block another message
+	isWaitingAnswer = true;
+
+	//add a delay before the answer
+	waitingAnswer = getRandomInt(10)+1;
+	setTimeout(function() { setPendingResponse(); }, waitingAnswer * 500);
+	
+	//generate an answer with a delay, computed with the number of word in the answer
+	setTimeout(function() { generateAnswer(nbWords); }, waitingAnswer * 500 + nbWords * 500);
 	
 	textbox.scrollTo(0,textbox.scrollHeight);
 	return false;
 }
 
 
-var WORDS = ['coin','coin', 'coin', 'coin', 'COIN', '*#"!:$*', 'koin', 'coin coin', 'k', 'quack'];
+function setPendingResponse()
+{
+	var textbox =  document.getElementsByClassName('text-content')[0];
+	textbox.innerHTML += "<div class='waitspeak'><div class='lds-ellipsis'><div></div><div></div><div></div><div></div></div></div>"
+	textbox.scrollTo(0,textbox.scrollHeight);
+}
+
+function removePendingResponse()
+{
+	var myobj = document.getElementsByClassName("waitspeak")[0];
+	myobj.remove(); 
+}
+
+var WORDS = ['coin','coin', 'coin', 'coin', 'COIN', '*#"!:$*', 'koin', 'coin coin', 'kkk', 'quack', 'couin', 'cot-cot', 'crôa'];
 var PONCTUATION = ['?', '!', ',', '...', '!!!'];
+var INTERLOCUTORS = ['Donald', 'Picsou', 'Daisy', 'Gontran', 'Daffy Duck', 'Howard', 'Coin-Coin', 'Plucky', 'Fantomiald', 'Riri'];
+
+
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -57,7 +91,11 @@ function generateAnswer(nbWords)
 		answer +=  ' ';
 	}
 
-	
-	textbox.innerHTML += "<div class='hespeak'><div class='chatform'><span class='titleme'>COIN COIN:</span><span class='chataddition'>"+getDateString()+"</span><div class='chattext'>" + answer +"</div></div></div>";
+	removePendingResponse();
+	textbox.innerHTML += "<div class='hespeak'><div class='chatform'><span class='titleme'>"+interlocutor+":</span><span class='chataddition'>"+getDateString()+"</span><div class='chattext'>" + answer +"</div></div></div>";
 	textbox.scrollTo(0,textbox.scrollHeight);
+	isWaitingAnswer = false;
 }
+
+//generate random interlocutor
+interlocutor = INTERLOCUTORS[getRandomInt(INTERLOCUTORS.length)];
