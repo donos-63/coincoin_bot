@@ -9,7 +9,7 @@
 }
 
 .chatbox input {
-	width: 100%;
+	width: 90%;
 	height: 30px;
 }
 
@@ -41,6 +41,7 @@
 	border-radius: 5px;
 	padding: 5px;
 	float: right;
+	min-width: 160px;
 }
 
 .waitspeak {
@@ -185,4 +186,77 @@ input[type=checkbox]:checked ~ label ~ .content {
   100% {
     transform: translate(12px, 0);
   }
+}
+
+
+/* Emoji popup */
+.emojibox-main-popover {
+    z-index: 10000;
+    position: absolute;
+    bottom: 50px;
+    right: calc(50% - 165px);
+    box-shadow: 0 1px 15px 1px rgba(0,0,0,.08);
+    background-color: #fff;
+    border-radius: 6px;
+    transition-duration: 200ms;
+    transition-delay: 0ms;
+    transform-style: flat;
+    transform-origin: 50% 50% 0;
+    opacity: 0;
+    transition: all 0.2s linear;
+    visibility: hidden;
+	border: groove 1px #000;
+}
+
+.emojibox-main-popover.active{
+  visibility: visible;
+  opacity:1;
+  bottom: 70px;
+}
+
+.emojibox-main-popover-picker {
+    width: 330px;
+    height: 260px;
+}
+
+.emojibox-main-popover-body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5px;
+    padding: 0 20px;
+    overflow-y: scroll;
+}
+
+.emojibox-emoji-item {
+    padding: 5px;
+    width: 30px;
+    line-height: 30px;
+    display: inline-table;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 28px;
+    transition: -webkit-transform 60ms ease-out;
+    transition: transform 60ms ease-out;
+    transition: transform 60ms ease-out,-webkit-transform 60ms ease-out;
+    transition-delay: 60ms;
+    font-family: Apple Color Emoji,Segoe UI Emoji,NotoColorEmoji,Segoe UI Symbol,Android Emoji,EmojiSymbols;
+}
+
+.emojibox-emoji-item:hover {
+    transition-delay: 0ms;
+    -webkit-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    transform: scale(1.4);
+}
+
+.emojibox-input-btn{
+  background-color: #fff;
+  padding: 3px;
+  border: groove black 1px;  
+  border-radius: 5px;
+  position: absolute;
+  display:inline;
+  cursor: pointer;
 }

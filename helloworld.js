@@ -56,9 +56,9 @@ function removePendingResponse()
 	myobj.remove(); 
 }
 
-var WORDS = ['coin','coin', 'coin', 'coin', 'COIN', '*#"!:$*', 'koin', 'coin coin', 'kkk', 'quack', 'couin', 'cot-cot', 'crôa'];
-var PONCTUATION = ['?', '!', ',', '...', '!!!'];
-var INTERLOCUTORS = ['Donald', 'Picsou', 'Daisy', 'Gontran', 'Daffy Duck', 'Howard', 'Coin-Coin', 'Plucky', 'Fantomiald', 'Riri'];
+const WORDS = ['coin','coin', 'coin', 'coin', 'COIN', '*#"!:$*', 'koin', 'coin coin', 'kkk', 'quack', 'couin', 'cot-cot', 'crôa'];
+const PONCTUATION = ['?', '!', ',', '...', '!!!'];
+const INTERLOCUTORS = ['Donald', 'Picsou', 'Daisy', 'Gontran', 'Daffy Duck', 'Howard', 'Coin-Coin', 'Plucky', 'Fantomiald'];
 
 
 
@@ -99,3 +99,39 @@ function generateAnswer(nbWords)
 
 //generate random interlocutor
 interlocutor = INTERLOCUTORS[getRandomInt(INTERLOCUTORS.length)];
+
+//replace smiley by emoji in input
+const discussionInput = document.getElementById('discussionInput');
+const EMOJIS = { ':-)' : "0x1F642", ':-(': '0x1F641', '(k)': "0x2764", ':-D' : "0x1F600"};
+
+discussionInput.addEventListener('input', textToEmoji);
+
+function textToEmoji(e)
+{
+	for(var key in EMOJIS)
+	{
+		var u = EMOJIS[key];
+		discussionInput.value = e.target.value.replace(key, String.fromCodePoint(parseInt(EMOJIS[key])));
+	}
+}
+
+var els = document.getElementsByClassName("emojibox-emoji-item");
+Array.prototype.forEach.call(els, function(el) {
+    el.onclick = function(){ 
+		discussionInput.value += el.innerHTML;
+	
+	};
+});
+
+//open/close emoji popup
+function toggleEmojis(){
+	document.getElementsByClassName('emojibox-main-popover')[0].classList.toggle("active");
+}
+
+document.onclick = function(e) { 
+	if(!(e.target).className.startsWith('emojibox-'))
+		document.getElementsByClassName('emojibox-main-popover')[0].classList.remove("active");
+
+ };
+
+

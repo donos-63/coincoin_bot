@@ -15,14 +15,50 @@
 				  </div>
 					<input type="checkbox" id="toggle">
 					<label for="toggle">Coincoin-box</label>
-
-					<!--<div for="toggle" ><img src="./open.png"></div>-->
 					<div class="content">
 						<div class="text-content" >
 						</div>
 						<input type="text" id="discussionInput" name="message"  placeholder="saisissez votre message..." text="coucou" autocomplete="off">
-						<input type="submit" id="submitMsg" value='Soumettre'>
-						<input type="hidden" name="user" value="Nicolas M.">
+						<span id="emoji-picker" class="emojibox-input-btn" onclick="toggleEmojis()" >
+							😄
+						</span>
+						<div class="emojibox-main-popover">
+							<div class="emojibox-main-popover-picker">
+								<div class="emojibox-main-popover-body">
+									<span class="emojibox-emoji-item" title="smile">😄</span>
+									<span class="emojibox-emoji-item" title="smiley">😃</span>
+									<span class="emojibox-emoji-item" title="grinning">😀</span>
+									<span class="emojibox-emoji-item" title="blush">😊</span>
+									<span class="emojibox-emoji-item" title="wink">😉</span>
+									<span class="emojibox-emoji-item" title="heart_eyes">😍</span>
+									<span class="emojibox-emoji-item" title="kissing_heart">😘</span>
+									<span class="emojibox-emoji-item" title="kissing_closed_eyes">😚</span>
+									<span class="emojibox-emoji-item" title="kissing">😗</span>
+									<span class="emojibox-emoji-item" title="kissing_smiling_eyes">😙</span>
+									<span class="emojibox-emoji-item" title="stuck_out_tongue_winking_eye">😜</span>
+									<span class="emojibox-emoji-item" title="stuck_out_tongue_closed_eyes">😝</span>
+									<span class="emojibox-emoji-item" title="stuck_out_tongue">😛</span>
+									<span class="emojibox-emoji-item" title="flushed">😳</span>
+									<span class="emojibox-emoji-item" title="grin">😁</span>
+									<span class="emojibox-emoji-item" title="pensive">😔</span>
+									<span class="emojibox-emoji-item" title="relieved">😌</span>
+									<span class="emojibox-emoji-item" title="unamused">😒</span>
+									<span class="emojibox-emoji-item" title="disappointed">😞</span>
+									<span class="emojibox-emoji-item" title="persevere">😣</span>
+									<span class="emojibox-emoji-item" title="cry">😢</span>
+									<span class="emojibox-emoji-item" title="joy">😂</span>
+									<span class="emojibox-emoji-item" title="sob">😭</span>
+									<span class="emojibox-emoji-item" title="sleepy">😪</span>
+									<span class="emojibox-emoji-item" title="disappointed_relieved">😥</span>
+									<span class="emojibox-emoji-item" title="cold_sweat">😰</span>
+									<span class="emojibox-emoji-item" title="sweat_smile">😅</span>
+									<span class="emojibox-emoji-item" title="sweat">😓</span>
+									<span class="emojibox-emoji-item" title="weary">😩</span>
+								</div>
+							</div>
+						</div>
+					<input type="submit" id="submitMsg" value='Soumettre'>
+					<input type="hidden" name="user" value="Nicolas M.">
 					</div>
 				  </div>
 				</div>
