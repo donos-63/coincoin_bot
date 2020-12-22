@@ -28,7 +28,7 @@ function submitDiscussion(){
 	var nbWords = getRandomInt(10) + 1;
 	//generate an answer with a delay, computed with the number of word in the answer
 
-	//block another message
+	//block another input message
 	isWaitingAnswer = true;
 
 	//add a delay before the answer
@@ -59,8 +59,6 @@ function removePendingResponse()
 const WORDS = ['coin','coin', 'coin', 'coin', 'COIN', '*#"!:$*', 'koin', 'coin coin', 'kkk', 'quack', 'couin', 'cot-cot', 'crôa'];
 const PONCTUATION = ['?', '!', ',', '...', '!!!'];
 const INTERLOCUTORS = ['Donald', 'Picsou', 'Daisy', 'Gontran', 'Daffy Duck', 'Howard', 'Coin-Coin', 'Plucky', 'Fantomiald'];
-
-
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -119,7 +117,6 @@ var els = document.getElementsByClassName("emojibox-emoji-item");
 Array.prototype.forEach.call(els, function(el) {
     el.onclick = function(){ 
 		discussionInput.value += el.innerHTML;
-	
 	};
 });
 
